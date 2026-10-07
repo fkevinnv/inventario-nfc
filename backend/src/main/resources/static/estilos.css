@@ -1,0 +1,135 @@
+/* Colores y medidas en un solo sitio para poder cambiar el tema fácilmente */
+:root {
+    --fondo: #f3f5f7;
+    --superficie: #ffffff;
+    --texto: #1c2733;
+    --texto-suave: #5b6670;
+    --borde: #d5dce3;
+    --acento: #1d5fa8;
+    --acento-oscuro: #164a85;
+    --peligro: #b3261e;
+}
+
+* { box-sizing: border-box; }
+
+body {
+    margin: 0;
+    background: var(--fondo);
+    color: var(--texto);
+    font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+    line-height: 1.5;
+}
+
+h1, h2, h3 { margin: 0; }
+h1 { font-size: 1.35rem; }
+h2 { font-size: 1.2rem; margin-bottom: 1rem; }
+h3 { font-size: 1rem; margin: 1.25rem 0 0.5rem; }
+
+/* Cabecera con título, buscador y botón */
+.cabecera {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.75rem 1rem;
+    padding: 1rem 1.5rem;
+    background: var(--superficie);
+    border-bottom: 1px solid var(--borde);
+}
+.cabecera h1 { flex: 1 1 14rem; }
+.cabecera input { flex: 2 1 18rem; }
+
+main { max-width: 64rem; margin: 0 auto; padding: 1.25rem 1.5rem 3rem; }
+.resumen { margin: 0 0 0.75rem; color: var(--texto-suave); }
+.vacio { padding: 2rem 0; text-align: center; color: var(--texto-suave); }
+
+/* Tabla de equipos */
+.tabla-contenedor {
+    overflow-x: auto;
+    background: var(--superficie);
+    border: 1px solid var(--borde);
+    border-radius: 6px;
+}
+table { width: 100%; border-collapse: collapse; min-width: 40rem; }
+th, td { padding: 0.65rem 0.9rem; text-align: left; }
+th { font-weight: 600; font-size: 0.9rem; color: var(--texto-suave); border-bottom: 1px solid var(--borde); }
+tbody tr { cursor: pointer; border-bottom: 1px solid var(--borde); }
+tbody tr:last-child { border-bottom: none; }
+tbody tr:hover { background: #eef3f9; }
+td.codigo { font-variant-numeric: tabular-nums; font-weight: 600; }
+
+/* Etiquetas de estado */
+.estado { display: inline-block; padding: 0.1rem 0.6rem; border-radius: 999px; font-size: 0.85rem; font-weight: 600; }
+.estado-OPERATIVO { background: #e3f2e9; color: #2e7d4f; }
+.estado-AVERIADO { background: #fbe5e3; color: #b3261e; }
+.estado-EN_REPARACION { background: #fdf0d2; color: #8a5a00; }
+.estado-BAJA { background: #e8ebee; color: #5b6670; }
+
+/* Formularios y botones */
+input, select {
+    width: 100%;
+    padding: 0.5rem 0.65rem;
+    border: 1px solid var(--borde);
+    border-radius: 5px;
+    font: inherit;
+    background: #fff;
+    color: inherit;
+}
+label { display: block; margin-bottom: 0.8rem; font-size: 0.9rem; font-weight: 600; }
+label input, label select { margin-top: 0.25rem; font-weight: 400; }
+
+.boton {
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--borde);
+    border-radius: 5px;
+    background: var(--superficie);
+    color: var(--texto);
+    font: inherit;
+    cursor: pointer;
+}
+.boton:hover { background: #eef1f4; }
+.boton-principal { background: var(--acento); border-color: var(--acento); color: #fff; }
+.boton-principal:hover { background: var(--acento-oscuro); }
+.boton-peligro { color: var(--peligro); border-color: var(--peligro); margin-right: auto; }
+
+input:focus-visible, select:focus-visible, .boton:focus-visible, tbody tr:focus-visible {
+    outline: 2px solid var(--acento);
+    outline-offset: 2px;
+}
+
+/* Ventanas de diálogo */
+dialog {
+    width: min(34rem, calc(100% - 2rem));
+    padding: 1.5rem;
+    border: none;
+    border-radius: 8px;
+    color: var(--texto);
+}
+dialog::backdrop { background: rgba(28, 39, 51, 0.45); }
+.fila { display: flex; gap: 0.75rem; }
+.fila label { flex: 1; }
+.acciones { display: flex; justify-content: flex-end; gap: 0.5rem; margin-top: 1.25rem; }
+
+/* Ficha del equipo */
+.datos { display: grid; grid-template-columns: 8rem 1fr; gap: 0.3rem 1rem; margin: 0; }
+.datos dt { color: var(--texto-suave); }
+.datos dd { margin: 0; }
+
+.incidencias { list-style: none; margin: 0; padding: 0; }
+.incidencias li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid var(--borde);
+}
+.incidencias small { display: block; color: var(--texto-suave); }
+.incidencias .resuelta { color: var(--texto-suave); text-decoration: line-through; }
+.fila-incidencia { display: flex; gap: 0.5rem; margin-top: 0.75rem; }
+.fila-incidencia .boton { white-space: nowrap; }
+
+@media (max-width: 520px) {
+    .fila { flex-direction: column; gap: 0; }
+    .datos { grid-template-columns: 1fr; }
+    .fila-incidencia { flex-direction: column; }
+}

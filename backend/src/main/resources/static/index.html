@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Inventario de equipos</title>
+    <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+    <header class="cabecera">
+        <h1>Inventario de equipos</h1>
+        <input type="search" id="buscador" placeholder="Buscar por nombre, código o ubicación" aria-label="Buscar equipos">
+        <button type="button" id="botonNuevo" class="boton boton-principal">Nuevo equipo</button>
+    </header>
+
+    <main>
+        <p id="resumen" class="resumen"></p>
+
+        <div class="tabla-contenedor">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Código</th>
+                        <th>Nombre</th>
+                        <th>Tipo</th>
+                        <th>Ubicación</th>
+                        <th>Estado</th>
+                    </tr>
+                </thead>
+                <tbody id="cuerpoTabla"></tbody>
+            </table>
+        </div>
+        <p id="vacio" class="vacio" hidden>No hay equipos que coincidan con la búsqueda.</p>
+    </main>
+
+    <!-- Formulario para crear o editar un equipo -->
+    <dialog id="dialogoFormulario">
+        <form id="formulario" method="dialog">
+            <h2 id="tituloFormulario">Nuevo equipo</h2>
+
+            <label>Nombre
+                <input name="nombre" required>
+            </label>
+            <label>Tipo
+                <input name="tipo" required placeholder="Portátil, impresora, router...">
+            </label>
+            <div class="fila">
+                <label>Marca <input name="marca"></label>
+                <label>Modelo <input name="modelo"></label>
+            </div>
+            <label>Número de serie
+                <input name="numeroSerie">
+            </label>
+            <label>Ubicación
+                <input name="ubicacion">
+            </label>
+            <label>Estado
+                <select name="estado">
+                    <option value="OPERATIVO">Operativo</option>
+                    <option value="AVERIADO">Averiado</option>
+                    <option value="EN_REPARACION">En reparación</option>
+                    <option value="BAJA">Baja</option>
+                </select>
+            </label>
+
+            <div class="acciones">
+                <button type="button" id="botonCancelar" class="boton">Cancelar</button>
+                <button type="submit" class="boton boton-principal">Guardar equipo</button>
+            </div>
+        </form>
+    </dialog>
+
+    <!-- Ficha de un equipo con su historial de incidencias -->
+    <dialog id="dialogoDetalle">
+        <h2 id="tituloDetalle"></h2>
+        <dl id="datosEquipo" class="datos"></dl>
+
+        <h3>Incidencias</h3>
+        <ul id="listaIncidencias" class="incidencias"></ul>
+
+        <form id="formularioIncidencia" class="fila-incidencia">
+            <input id="textoIncidencia" placeholder="Describe el problema" required aria-label="Descripción de la incidencia">
+            <button type="submit" class="boton">Reportar incidencia</button>
+        </form>
+
+        <div class="acciones">
+            <button type="button" id="botonEliminar" class="boton boton-peligro">Eliminar equipo</button>
+            <button type="button" id="botonEditar" class="boton">Editar</button>
+            <button type="button" id="botonCerrar" class="boton boton-principal">Cerrar</button>
+        </div>
+    </dialog>
+
+    <script src="app.js"></script>
+</body>
+</html>

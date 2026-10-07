@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.NFC" />
+
+    <!-- required=false: la app se puede instalar sin NFC y avisa si no está disponible -->
+    <uses-feature
+        android:name="android.hardware.nfc"
+        android:required="false" />
+
+    <!-- usesCleartextTraffic permite HTTP sin cifrar. Es válido para desarrollo;
+         en producción habría que usar HTTPS y quitarlo. -->
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.InventarioNfc"
+        android:usesCleartextTraffic="true">
+
+        <!-- singleTop: si la app ya está abierta, una etiqueta nueva llega a onNewIntent -->
+        <activity
+            android:name=".ui.PrincipalActivity"
+            android:exported="true"
+            android:label="@string/titulo_principal"
+            android:launchMode="singleTop">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+            <!-- Abre la app al acercar una etiqueta con un registro de texto (el código del equipo) -->
+            <intent-filter>
+                <action android:name="android.nfc.action.NDEF_DISCOVERED" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:mimeType="text/plain" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".ui.DetalleEquipoActivity"
+            android:exported="false"
+            android:label="@string/titulo_detalle" />
+
+        <activity
+            android:name=".ui.RegistrarEquipoActivity"
+            android:exported="false"
+            android:label="@string/titulo_registrar" />
+    </application>
+
+</manifest>

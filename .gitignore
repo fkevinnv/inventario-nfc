@@ -1,0 +1,15 @@
+# Backend
+backend/target/
+backend/datos/
+# Android
+android/.gradle/
+android/build/
+android/app/build/
+android/local.properties
+android/.idea/
+# Editores y sistema
+.idea/
+.vscode/
+*.iml
+.DS_Store
+Thumbs.db

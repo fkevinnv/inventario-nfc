@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Inventario NFC</string>
+
+    <string name="titulo_principal">Inventario de equipos</string>
+    <string name="titulo_detalle">Ficha del equipo</string>
+    <string name="titulo_registrar">Registrar equipo</string>
+
+    <string name="ayuda_principal">Acerca el móvil a la etiqueta NFC de un equipo para ver su ficha. Si no tienes la etiqueta a mano, escribe el código.</string>
+    <string name="hint_codigo">Código del equipo (EQ-XXXXXXXX)</string>
+    <string name="boton_buscar">Buscar equipo</string>
+    <string name="boton_registrar">Registrar equipo nuevo</string>
+
+    <string name="nfc_listo">NFC activado. Ya puedes acercar una etiqueta.</string>
+    <string name="nfc_desactivado">El NFC está desactivado. Actívalo en los ajustes del móvil.</string>
+    <string name="nfc_no_disponible">Este dispositivo no tiene NFC. Puedes buscar por código.</string>
+
+    <string name="boton_reportar">Reportar incidencia</string>
+    <string name="hint_incidencia">Describe el problema</string>
+    <string name="titulo_incidencias">Incidencias</string>
+    <string name="ayuda_incidencias">Toca una incidencia pendiente para marcarla como resuelta.</string>
+    <string name="sin_incidencias">Este equipo no tiene incidencias.</string>
+
+    <string name="hint_nombre">Nombre</string>
+    <string name="hint_tipo">Tipo (portátil, impresora, router...)</string>
+    <string name="hint_marca">Marca</string>
+    <string name="hint_modelo">Modelo</string>
+    <string name="hint_numero_serie">Número de serie</string>
+    <string name="hint_ubicacion">Ubicación</string>
+    <string name="boton_guardar">Guardar equipo</string>
+    <string name="acerca_etiqueta">Equipo guardado con el código %1$s.\nAcerca una etiqueta NFC al móvil para grabarla.</string>
+</resources>
